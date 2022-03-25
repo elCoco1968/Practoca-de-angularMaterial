@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'evaluacion';
+
+  isDarktheme: boolean = false;
+
+  ngOnInit(){
+    this.isDarktheme = localStorage.getItem('theme')=== "Dark" ? true:false;
+    console.log(this.isDarktheme)
+  }
+
+  storeThemeSelection(){
+    localStorage.setItem('theme', this.isDarktheme? "Dark" : "Light");
+    
+  }
+
 }

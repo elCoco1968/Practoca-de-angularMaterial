@@ -1,0 +1,25 @@
+<div class="body d-flex justify-content-center">
+    <div class="login">
+        <mat-card class="login--card">
+          <img src="../../../assets/img/grupo.png">
+            <form [formGroup]="form" class="example-form d-flex flex-column" (ngSubmit)="ingresar()">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>User</mat-label>
+                  <input matInput formControlName="user"  autocomplete="off" >
+                </mat-form-field>
+        
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" formControlName="password" autocomplete="off" >
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Rol</mat-label>
+                  <input matInput type="password" autocomplete="off" >
+                </mat-form-field>
+                <button type="submit" mat-button  >Ingresar</button>
+              </form>
+              
+        </mat-card>
+    </div>
+</div>

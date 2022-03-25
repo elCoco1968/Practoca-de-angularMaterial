@@ -1,0 +1,66 @@
+<div class="container">
+    <mat-card class="d-flex justify-content-between">
+        <h1>Usuarios</h1>
+        <button mat-button color="primary" routerLink="/dashboard/addUser">Add Usuario</button>
+    </mat-card>
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
+    </mat-form-field>
+    <h2 *ngIf="listUsuarios.length <= 0"> No data available </h2>
+    <table *ngIf="listUsuarios.length > 0" mat-table [dataSource]="dataSource" class="mat-elevation-z8" color="primary">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>
+                ID
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef>
+                Nombre
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef>
+                Apellido
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="cedula">
+            <th mat-header-cell *matHeaderCellDef>
+                Cedula
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.cedula}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="actions" class="table__actions" >
+            <th  mat-header-cell *matHeaderCellDef style="text-align: right;">
+                Actions
+            </th>
+            <td mat-cell *matCellDef="let element;let i = index" style="text-align: right;" >
+                <a  class="pointer" (click)="seeUser(i)"   matTooltip="See">
+                    <mat-icon>search</mat-icon>
+                </a>
+                <a  class="pointer" (click)="userEdit(i)" matTooltip="edit">
+                    <mat-icon>edit</mat-icon>
+                </a>
+                <a  class="pointer" (click)="eliminarUsuario(i)" matTooltip="delete">
+                    <mat-icon>delete</mat-icon>
+                </a>
+            </td>
+        </ng-container>
+       
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
